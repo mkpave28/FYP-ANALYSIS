@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-df = pd.read_excel('https://github.com/mkpave28/FYP-ANALYSIS/blob/main/SEXUAL%20HARASSMENT%20IN%20SOCIAL%20MEDIA%20FROM%202018%20UNTIL%202022%20BY%20WAO.csv')
+df = pd.read_csv('https://github.com/mkpave28/FYP-ANALYSIS/blob/main/SEXUAL%20HARASSMENT%20IN%20SOCIAL%20MEDIA%20FROM%202018%20UNTIL%202022%20BY%20WAO.csv')
 # Display the first 5 rows of the dataset
 st.write(df.head())
 
