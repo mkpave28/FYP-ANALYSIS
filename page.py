@@ -9,8 +9,7 @@ st.write(df.info())
 
 # Summary statistics for numerical columns
 st.write(df.describe())
-import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import seaborn as sns
 # Histogram of age
 plt.figure(figsize=(10, 6))
