@@ -11,8 +11,6 @@ st.write(df.info())
 st.write(df.describe())
 import matplotlib as plt
 import seaborn as sns
-# Histogram of age
-plt.figure(figsize=(10, 6))
 plt.figure(figsize=(10, 6))
 sns.countplot(x='INCIDENT YEAR', data=df, palette='viridis', edgecolor='black')
 plt.title('Frequency of Harassment by Year')
