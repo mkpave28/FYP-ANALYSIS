@@ -9,12 +9,14 @@ df = pd.read_csv('https://raw.githubusercontent.com/mkpave28/FYP-ANALYSIS/refs/h
 # Display the first 5 rows
 st.write(df.head())
 
-# Information about columns, data types, and non-null counts
-st.write(df.info())
+# Display DataFrame info as text
+buffer = []
+df.info(buf=buffer)
+info_str = "\n".join(buffer)
+st.text(info_str)  # Use st.text instead of st.write for df.info()
 
-# Summary statistics for numerical columns
+# Display summary statistics
 st.write(df.describe())
-
 # Plotting
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.countplot(x='INCIDENT YEAR', data=df, palette='viridis', edgecolor='black', ax=ax)
