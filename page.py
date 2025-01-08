@@ -13,8 +13,9 @@ import matplotlib as plt
 import seaborn as sns
 # Histogram of age
 plt.figure(figsize=(10, 6))
-sns.histplot(df['VICTIM AGE'], kde=True, bins=20, color='skyblue', edgecolor='black')
-plt.title('Distribution of Age')
-plt.xlabel('Age')
-plt.ylabel('Frequency')
-st.pyplot(plt.gcf())
+plt.figure(figsize=(10, 6))
+sns.countplot(x='INCIDENT YEAR', data=df, palette='viridis', edgecolor='black')
+plt.title('Frequency of Harassment by Year')
+plt.xlabel('Incident Year')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
