@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from io import StringIO
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -10,10 +11,11 @@ df = pd.read_csv('https://raw.githubusercontent.com/mkpave28/FYP-ANALYSIS/refs/h
 st.write(df.head())
 
 # Display DataFrame info as text
-buffer = []
+buffer = StringIO()
 df.info(buf=buffer)
-info_str = "\n".join(buffer)
-st.text(info_str)  # Use st.text instead of st.write for df.info()
+info_str = buffer.getvalue()
+st.text(info_str)
+
 
 # Display summary statistics
 st.write(df.describe())
