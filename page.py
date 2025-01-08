@@ -9,13 +9,10 @@ df = pd.read_csv('https://raw.githubusercontent.com/mkpave28/FYP-ANALYSIS/refs/h
 # Display the first 5 rows
 st.write(df.head())
 
-# Display info
-buffer = []
-df.info(buf=buffer)
-info_str = '\n'.join(buffer)
-st.text(info_str)
+# Information about columns, data types, and non-null counts
+st.write(df.info())
 
-# Display summary statistics
+# Summary statistics for numerical columns
 st.write(df.describe())
 
 # Plotting
