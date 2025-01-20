@@ -77,12 +77,19 @@ elif selected_section == "Visualizations":
 
     # Graph Implementation
    if selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
-       plt.figure(figsize=(8, 6))
-       sns.histplot(df['INCIDENT YEAR'], kde=True, bins=20, color='#008080', edgecolor='black', alpha=0.6)
-       plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
-       plt.xlabel('Year of Incident', fontsize=12)
-       plt.ylabel('Number of Cases', fontsize=12)
-       st.pyplot()
+    plt.figure(figsize=(8, 6))
+    sns.histplot(
+        df['INCIDENT YEAR'], 
+        kde=True, 
+        bins=20, 
+        color='#008080', 
+        edgecolor='black', 
+        alpha=0.6
+    )
+    plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
+    plt.xlabel('Year of Incident', fontsize=12)
+    plt.ylabel('Number of Cases', fontsize=12)  # Corrected indentation
+    st.pyplot()
    
    elif selected_graph == "Duration of Harassment Cases (in Months)":
        plt.figure(figsize=(8, 6))
