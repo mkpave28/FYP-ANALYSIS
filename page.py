@@ -76,7 +76,7 @@ elif selected_section == "Visualizations":
     selected_graph = st.selectbox("Select a graph to view", graph_options)
 
     # Graph Implementation
-    if selected_graph == "Age Distribution of Victims":
+    elif selected_graph == "Age Distribution of Victims":
         plt.figure(figsize=(8, 6))
         sns.histplot(df['VICTIM AGE'], kde=True, bins=20, color='#008080', edgecolor='black')
         plt.title('Age Distribution of Victims')
