@@ -76,7 +76,30 @@ elif selected_section == "Visualizations":
     selected_graph = st.selectbox("Select a graph to view", graph_options)
 
     # Graph Implementation
-    if selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
+    if selected_graph == "Age Distribution of Victims":
+        plt.figure(figsize=(8, 6))
+        sns.histplot(df['VICTIM AGE'], kde=True, bins=20, color='#008080', edgecolor='black')
+        plt.title('Age Distribution of Victims')
+        plt.xlabel('Age of Victims', fontsize=12)
+        plt.ylabel('Number of Cases', fontsize=12)
+        st.pyplot()
+    elif selected_graph == "Age Range of Victims":
+        plt.figure(figsize=(8, 6))
+        sns.boxplot(x=df['VICTIM AGE'], color='#FF6347')
+        plt.title('Age Range of Victims', fontsize=14)
+        plt.xlabel('Age of Victims', fontsize=12)
+        st.pyplot()
+    
+    elif selected_graph == "Yearly Frequency of Harassment Cases":
+        plt.figure(figsize=(8, 6))
+        sns.countplot(x='INCIDENT YEAR', data=df, palette='Dark2', edgecolor='black')
+        plt.title('Yearly Frequency of Harassment Cases', fontsize=14)
+        plt.xlabel('Year of Incident', fontsize=12)
+        plt.ylabel('Number of Cases', fontsize=12)
+        plt.xticks(rotation=90)
+        st.pyplot()
+
+    elif selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
         plt.figure(figsize=(8, 6))
         sns.histplot(
             df['INCIDENT YEAR'], 
