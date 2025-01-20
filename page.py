@@ -76,22 +76,22 @@ elif selected_section == "Visualizations":
     selected_graph = st.selectbox("Select a graph to view", graph_options)
 
     # Graph Implementation
-   if selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
-    plt.figure(figsize=(8, 6))
-    sns.histplot(
-        df['INCIDENT YEAR'], 
-        kde=True, 
-        bins=20, 
-        color='#008080', 
-        edgecolor='black', 
-        alpha=0.6
-    )
-    plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
-    plt.xlabel('Year of Incident', fontsize=12)
-    plt.ylabel('Number of Cases', fontsize=12)  # Corrected indentation
-    st.pyplot()
-   
-   elif selected_graph == "Duration of Harassment Cases (in Months)":
+    if selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
+        plt.figure(figsize=(8, 6))
+        sns.histplot(
+            df['INCIDENT YEAR'], 
+            kde=True, 
+            bins=20, 
+            color='#008080', 
+            edgecolor='black', 
+            alpha=0.6
+        )
+        plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
+        plt.xlabel('Year of Incident', fontsize=12)
+        plt.ylabel('Number of Cases', fontsize=12)  # Corrected indentation
+        st.pyplot()
+    
+    elif selected_graph == "Duration of Harassment Cases (in Months)":
        plt.figure(figsize=(8, 6))
        sns.countplot(x='DURATION (MONTHS)', data=df, palette='husl', edgecolor='black')
        plt.title('Duration of Harassment Cases (in Months)', fontsize=14)
