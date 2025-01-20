@@ -41,6 +41,7 @@ if selected_section == "Dataset Overview":
     st.dataframe(df.describe())
 
 # Visualizations Section
+# Visualizations Section
 elif selected_section == "Visualizations":
     st.header("Visualizations")
     
@@ -139,156 +140,143 @@ elif selected_section == "Visualizations":
         plt.title('Duration of Harassment Cases (in Months)', fontsize=14)
         plt.xlabel('Duration (Months)', fontsize=12)
         plt.ylabel('Number of Cases', fontsize=12)
-        st.pyplot()
+        st.pyplot() 
     
     elif selected_graph == "Monthly Harassment Trend (Line Chart)":
-    monthly_trend = df.groupby('MONTH')['CASE ID'].count()
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(data=monthly_trend, marker="o", color="#FF6F61")
-    plt.title("Monthly Harassment Trend", fontsize=14)
-    plt.xlabel("Month", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    st.pyplot()
-
+        monthly_trend = df.groupby('MONTH')['CASE ID'].count()
+        plt.figure(figsize=(10, 6))
+        sns.lineplot(data=monthly_trend, marker="o", color="#FF6F61")
+        plt.title("Monthly Harassment Trend", fontsize=14)
+        plt.xlabel("Month", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Year-Month Analysis of Cases (Heatmap)":
-    heatmap_data = df.pivot_table(index='MONTH', columns='INCIDENT YEAR', values='CASE ID', aggfunc='count')
-    plt.figure(figsize=(12, 8))
-    sns.heatmap(heatmap_data, cmap="YlGnBu", annot=True, fmt=".0f", linewidths=0.5)
-    plt.title("Year-Month Analysis of Cases", fontsize=14)
-    st.pyplot()
-
-# Relation Between Age and Harassment Type (Scatter Plot)
+        heatmap_data = df.pivot_table(index='MONTH', columns='INCIDENT YEAR', values='CASE ID', aggfunc='count')
+        plt.figure(figsize=(12, 8))
+        sns.heatmap(heatmap_data, cmap="YlGnBu", annot=True, fmt=".0f", linewidths=0.5)
+        plt.title("Year-Month Analysis of Cases", fontsize=14)
+        st.pyplot()
+    
     elif selected_graph == "Relation Between Age and Harassment Type (Scatter Plot)":
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x="VICTIM AGE", y="TYPE OF HARASSMENT", data=df, alpha=0.7, hue="ACTION TAKEN")
-    plt.title("Relation Between Age and Harassment Type", fontsize=14)
-    plt.xlabel("Victim Age", fontsize=12)
-    plt.ylabel("Harassment Type", fontsize=12)
-    st.pyplot()
-
-# Monthly Harassment Cases by State (Stacked Bar Chart)
-elif selected_graph == "Monthly Harassment Cases by State (Stacked Bar Chart)":
-    state_month_data = df.groupby(['LOCATION (STATE)', 'MONTH'])['CASE ID'].count().unstack()
-    state_month_data.plot(kind="bar", stacked=True, figsize=(12, 8), colormap="tab20c")
-    plt.title("Monthly Harassment Cases by State", fontsize=14)
-    plt.xlabel("State", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    plt.legend(title="Month", bbox_to_anchor=(1.05, 1), loc="upper left")
-    st.pyplot()
-
-# Day-of-Week Frequency of Incidents (Bar Chart)
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(x="VICTIM AGE", y="TYPE OF HARASSMENT", data=df, alpha=0.7, hue="ACTION TAKEN")
+        plt.title("Relation Between Age and Harassment Type", fontsize=14)
+        plt.xlabel("Victim Age", fontsize=12)
+        plt.ylabel("Harassment Type", fontsize=12)
+        st.pyplot()
+    
+    elif selected_graph == "Monthly Harassment Cases by State (Stacked Bar Chart)":
+        state_month_data = df.groupby(['LOCATION (STATE)', 'MONTH'])['CASE ID'].count().unstack()
+        state_month_data.plot(kind="bar", stacked=True, figsize=(12, 8), colormap="tab20c")
+        plt.title("Monthly Harassment Cases by State", fontsize=14)
+        plt.xlabel("State", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        plt.legend(title="Month", bbox_to_anchor=(1.05, 1), loc="upper left")
+        st.pyplot()
+    
     elif selected_graph == "Day-of-Week Frequency of Incidents (Bar Chart)":
-    plt.figure(figsize=(10, 6))
-    sns.countplot(x="DAY OF WEEK", data=df, palette="cubehelix", order=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-    plt.title("Day-of-Week Frequency of Incidents", fontsize=14)
-    plt.xlabel("Day of the Week", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    st.pyplot()
-
-# Number of Cases by Time of Day (Bar Chart)
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x="DAY OF WEEK", data=df, palette="cubehelix", order=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+        plt.title("Day-of-Week Frequency of Incidents", fontsize=14)
+        plt.xlabel("Day of the Week", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Number of Cases by Time of Day (Bar Chart)":
-    plt.figure(figsize=(10, 6))
-    sns.countplot(x="TIME OF DAY", data=df, palette="Set2", order=["Morning", "Afternoon", "Evening", "Night"])
-    plt.title("Number of Cases by Time of Day", fontsize=14)
-    plt.xlabel("Time of Day", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    st.pyplot()
-
-# Severity of Cases by Time of Day (Boxplot)
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x="TIME OF DAY", data=df, palette="Set2", order=["Morning", "Afternoon", "Evening", "Night"])
+        plt.title("Number of Cases by Time of Day", fontsize=14)
+        plt.xlabel("Time of Day", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Severity of Cases by Time of Day (Boxplot)":
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x="TIME OF DAY", y="SEVERITY SCORE", data=df, palette="pastel")
-    plt.title("Severity of Cases by Time of Day", fontsize=14)
-    plt.xlabel("Time of Day", fontsize=12)
-    plt.ylabel("Severity Score", fontsize=12)
-    st.pyplot()
-
-# Location of Cases (Geographical Distribution)
+        plt.figure(figsize=(10, 6))
+        sns.boxplot(x="TIME OF DAY", y="SEVERITY SCORE", data=df, palette="pastel")
+        plt.title("Severity of Cases by Time of Day", fontsize=14) 
+        plt.xlabel("Time of Day", fontsize=12)
+        plt.ylabel("Severity Score", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Location of Cases (Geographical Distribution)":
-    st.map(df[["LATITUDE", "LONGITUDE"]].dropna())
-
-# Number of Cases by Location Type (Bar Chart)
+        st.map(df[["LATITUDE", "LONGITUDE"]].dropna())
+    
     elif selected_graph == "Number of Cases by Location Type (Bar Chart)":
-    plt.figure(figsize=(10, 6))
-    sns.countplot(x="LOCATION TYPE", data=df, palette="coolwarm", order=df["LOCATION TYPE"].value_counts().index)
-    plt.title("Number of Cases by Location Type", fontsize=14)
-    plt.xlabel("Location Type", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    st.pyplot()
-
-# Age and Duration Correlation (Scatter Plot with Regression)
+        plt.figure(figsize=(10, 6))
+        sns.countplot(x="LOCATION TYPE", data=df, palette="coolwarm", order=df["LOCATION TYPE"].value_counts().index)
+        plt.title("Number of Cases by Location Type", fontsize=14)
+        plt.xlabel("Location Type", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Age and Duration Correlation (Scatter Plot with Regression)":
-    plt.figure(figsize=(10, 6))
-    sns.regplot(x="VICTIM AGE", y="DURATION (MONTHS)", data=df, scatter_kws={"alpha": 0.5}, line_kws={"color": "red"})
-    plt.title("Correlation Between Age and Duration of Harassment", fontsize=14)
-    plt.xlabel("Victim Age", fontsize=12)
-    plt.ylabel("Duration (Months)", fontsize=12)
-    st.pyplot()
-
-# Harassment Types and Severity Comparison (Bar Chart)
+        plt.figure(figsize=(10, 6))
+        sns.regplot(x="VICTIM AGE", y="DURATION (MONTHS)", data=df, scatter_kws={"alpha": 0.5}, line_kws={"color": "red"})
+        plt.title("Correlation Between Age and Duration of Harassment", fontsize=14)
+        plt.xlabel("Victim Age", fontsize=12)
+        plt.ylabel("Duration (Months)", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Harassment Types and Severity Comparison (Bar Chart)":
-    plt.figure(figsize=(12, 6))
-    sns.barplot(x="TYPE OF HARASSMENT", y="SEVERITY SCORE", data=df, ci=None, palette="viridis")
-    plt.title("Comparison of Harassment Types and Severity", fontsize=14)
-    plt.xlabel("Harassment Type", fontsize=12)
-    plt.ylabel("Severity Score", fontsize=12)
-    plt.xticks(rotation=45, ha="right")
-    st.pyplot()
-
-# Monthly Victim Counts for Key States (Line Chart)
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x="TYPE OF HARASSMENT", y="SEVERITY SCORE", data=df, ci=None, palette="viridis")
+        plt.title("Comparison of Harassment Types and Severity", fontsize=14)
+        plt.xlabel("Harassment Type", fontsize=12)
+        plt.ylabel("Severity Score", fontsize=12)
+        plt.xticks(rotation=45, ha="right")
+        st.pyplot()
+    
     elif selected_graph == "Monthly Victim Counts for Key States (Line Chart)":
-    key_states = ["Selangor", "Kuala Lumpur", "Johor"]
-    filtered_df = df[df["LOCATION (STATE)"].isin(key_states)]
-    monthly_data = filtered_df.groupby(["LOCATION (STATE)", "MONTH"])["CASE ID"].count().unstack()
-    plt.figure(figsize=(12, 6))
-    monthly_data.T.plot(marker="o", figsize=(12, 6))
-    plt.title("Monthly Victim Counts for Key States", fontsize=14)
-    plt.xlabel("Month", fontsize=12)
-    plt.ylabel("Number of Cases", fontsize=12)
-    plt.legend(title="State")
-    st.pyplot()
-
-# Comparison of Action Taken Across States (Grouped Bar Chart)
+        key_states = ["Selangor", "Kuala Lumpur", "Johor"]
+        filtered_df = df[df["LOCATION (STATE)"].isin(key_states)]
+        monthly_data = filtered_df.groupby(["LOCATION (STATE)", "MONTH"])["CASE ID"].count().unstack()
+        plt.figure(figsize=(12, 6))
+        monthly_data.T.plot(marker="o", figsize=(12, 6))
+        plt.title("Monthly Victim Counts for Key States", fontsize=14)
+        plt.xlabel("Month", fontsize=12)
+        plt.ylabel("Number of Cases", fontsize=12)
+        plt.legend(title="State")
+        st.pyplot()
+    
     elif selected_graph == "Comparison of Action Taken Across States (Grouped Bar Chart)":
-    state_action_data = df.groupby(["LOCATION (STATE)", "ACTION TAKEN"])["CASE ID"].count().unstack()
-    state_action_data.plot(kind="bar", figsize=(12, 6), colormap="tab10")
-    plt.title("Comparison of Action Taken Across States", fontsize=14)
-    plt.xlabel("State", fontsize=12)
-    plt.ylabel("Number of Actions", fontsize=12)
-    plt.legend(title="Action Taken", bbox_to_anchor=(1.05, 1), loc="upper left")
-    st.pyplot()
-
-# Year-on-Year Growth Rate of Harassment Cases (Line Chart)
+        state_action_data = df.groupby(["LOCATION (STATE)", "ACTION TAKEN"])["CASE ID"].count().unstack()
+        state_action_data.plot(kind="bar", figsize=(12, 6), colormap="tab10")
+        plt.title("Comparison of Action Taken Across States", fontsize=14)
+        plt.xlabel("State", fontsize=12)
+        plt.ylabel("Number of Actions", fontsize=12)
+        plt.legend(title="Action Taken", bbox_to_anchor=(1.05, 1), loc="upper left")
+        st.pyplot()
+    
     elif selected_graph == "Year-on-Year Growth Rate of Harassment Cases (Line Chart)":
-    yearly_cases = df.groupby("INCIDENT YEAR")["CASE ID"].count()
-    growth_rate = yearly_cases.pct_change() * 100
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(x=yearly_cases.index, y=growth_rate, marker="o", color="#D81B60")
-    plt.axhline(0, color="gray", linestyle="--", linewidth=1)
-    plt.title("Year-on-Year Growth Rate of Harassment Cases", fontsize=14)
-    plt.xlabel("Year", fontsize=12)
-    plt.ylabel("Growth Rate (%)", fontsize=12)
-    st.pyplot()
-
-# Severity Analysis for Key Harassment Types (Boxplot)
+        yearly_cases = df.groupby("INCIDENT YEAR")["CASE ID"].count()
+        growth_rate = yearly_cases.pct_change() * 100
+        plt.figure(figsize=(10, 6))
+        sns.lineplot(x=yearly_cases.index, y=growth_rate, marker="o", color="#D81B60")
+        plt.axhline(0, color="gray", linestyle="--", linewidth=1)
+        plt.title("Year-on-Year Growth Rate of Harassment Cases", fontsize=14)
+        plt.xlabel("Year", fontsize=12)
+        plt.ylabel("Growth Rate (%)", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Severity Analysis for Key Harassment Types (Boxplot)":
-    key_types = ["Verbal", "Physical", "Cyber"]
-    filtered_df = df[df["TYPE OF HARASSMENT"].isin(key_types)]
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x="TYPE OF HARASSMENT", y="SEVERITY SCORE", data=filtered_df, palette="coolwarm")
-    plt.title("Severity Analysis for Key Harassment Types", fontsize=14)
-    plt.xlabel("Harassment Type", fontsize=12)
-    plt.ylabel("Severity Score", fontsize=12)
-    st.pyplot()
-
-# Relationship Between Victim Age and Incident Duration (Scatter Plot)
+        key_types = ["Verbal", "Physical", "Cyber"]
+        filtered_df = df[df["TYPE OF HARASSMENT"].isin(key_types)]
+        plt.figure(figsize=(10, 6))
+        sns.boxplot(x="TYPE OF HARASSMENT", y="SEVERITY SCORE", data=filtered_df, palette="coolwarm")
+        plt.title("Severity Analysis for Key Harassment Types", fontsize=14)
+        plt.xlabel("Harassment Type", fontsize=12)
+        plt.ylabel("Severity Score", fontsize=12)
+        st.pyplot()
+    
     elif selected_graph == "Relationship Between Victim Age and Incident Duration (Scatter Plot)":
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x="VICTIM AGE", y="DURATION (MONTHS)", data=df, hue="TYPE OF HARASSMENT", alpha=0.7, palette="Dark2")
-    plt.title("Relationship Between Victim Age and Incident Duration", fontsize=14)
-    plt.xlabel("Victim Age", fontsize=12)
-    plt.ylabel("Incident Duration (Months)", fontsize=12)
-    st.pyplot() 
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(x="VICTIM AGE", y="DURATION (MONTHS)", data=df, hue="TYPE OF HARASSMENT", alpha=0.7, palette="Dark2")
+        plt.title("Relationship Between Victim Age and Incident Duration", fontsize=14)
+        plt.xlabel("Victim Age", fontsize=12)
+        plt.ylabel("Incident Duration (Months)", fontsize=12)
+        st.pyplot()
+
 
 
 # Insights Section
