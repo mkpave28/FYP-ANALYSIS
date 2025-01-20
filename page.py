@@ -83,6 +83,7 @@ elif selected_section == "Visualizations":
         plt.xlabel('Age of Victims', fontsize=12)
         plt.ylabel('Number of Cases', fontsize=12)
         st.pyplot()
+        
     elif selected_graph == "Age Range of Victims":
         plt.figure(figsize=(8, 6))
         sns.boxplot(x=df['VICTIM AGE'], color='#FF6347')
@@ -111,7 +112,7 @@ elif selected_section == "Visualizations":
         )
         plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
         plt.xlabel('Year of Incident', fontsize=12)
-        plt.ylabel('Number of Cases', fontsize=12)  # Corrected indentation
+        plt.ylabel('Number of Cases', fontsize=12)  
         st.pyplot()
     
     elif selected_graph == "Duration of Harassment Cases (in Months)":
