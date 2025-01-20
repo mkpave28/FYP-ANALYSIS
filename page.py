@@ -196,7 +196,7 @@ elif selected_section == "Visualizations":
     
     elif selected_graph == "Trends in Harassment Types by Incident Year":
         stacked_data = df.pivot_table(index='INCIDENT YEAR', columns='TYPE OF HARASSMENT', values='VICTIM AGE', aggfunc='count').fillna(0)\
-        stacked_data.plot(kind='bar', stacked=True, figsize=(8, 6), cmap='Spectral', edgecolor='black')
+        stacked_data.plot(kind='bar', stacked=True, figsize=(8, 6), colormap='Spectral', edgecolor='black')
         plt.title('Trends in Harassment Types by Incident Year', fontsize=12)
         plt.ylabel('Number of Cases', fontsize=12)
         plt.xlabel('Year of Incident', fontsize=12)
