@@ -401,7 +401,7 @@ elif selected_section == "Visualizations":
         ax.set_xticks(ax.get_xticks() + 0.9)  
         st.pyplot()
         
- elif selected_section == "Clustering Results":
+elif selected_section == "Clustering Results":
     st.header("Clustering Analysis")
     
     # Defining categorical and numerical columns
@@ -435,6 +435,7 @@ elif selected_section == "Visualizations":
     
     # Display the plot in Streamlit
     st.pyplot(plt)
+
 
 
 # Insights Section
