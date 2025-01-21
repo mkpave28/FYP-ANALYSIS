@@ -15,7 +15,7 @@ st.title("Women Harassment Analysis in Social Media (2018-2022)")
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-sections = ["Dataset Overview", "Visualizations", "Insights"]
+sections = ["Home", "Dataset Overview", "Visualizations","Exploratory Data Analysis", "Clustering Analysis", "Insights"]
 selected_section = st.sidebar.radio("Go to", sections)
 
 # Load dataset
@@ -410,9 +410,6 @@ elif selected_section == "Insights":
     - Visualizations reveal trends in incident frequency over the years.
     - Insights will be added here as we analyze more data.
     """)
-
-st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("Go to", ["Home", "Exploratory Data Analysis", "Clustering Analysis"])
 
 if page == "Home":
     st.title("Home")
