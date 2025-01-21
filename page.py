@@ -402,7 +402,7 @@ elif selected_section == "Visualizations":
         st.pyplot()
         
       
-elif selected_section == "Clustering":
+elif selected_section == "Clustering Results":
     st.header("Clustering Analysis")
         
     categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
