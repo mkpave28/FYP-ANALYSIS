@@ -3,8 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from io import StringIO
-import numpy as np
-from kmodes.kprototypes import KPrototypes
+
 
 # Set page title and layout
 st.set_page_config(
