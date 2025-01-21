@@ -434,6 +434,7 @@ elif selected_section == "Clustering Results":
     plt.title('Distribution of Clusters', fontsize=14)
     plt.xlabel('Cluster', fontsize=12)
     plt.ylabel('Number of Cases', fontsize=12)
+    st.pyplot(plt)
     
     # Add a new section for detailed analysis
     st.write("### Detailed Analysis")
@@ -443,8 +444,7 @@ elif selected_section == "Clustering Results":
     sns.pairplot(df, hue='Cluster', vars=numeric_columns, palette='viridis')
     st.pyplot()
     
-    # Display the plot in Streamlit
-    st.pyplot(plt)
+    
 
 
 
