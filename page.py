@@ -411,6 +411,32 @@ elif selected_section == "Insights":
     - Insights will be added here as we analyze more data.
     """)
 
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Go to", ["Home", "Exploratory Data Analysis", "Clustering Analysis"])
+
+if page == "Home":
+    st.title("Home")
+    st.write("Welcome to the Social Media Harassment Analysis Dashboard.")
+
+elif page == "Exploratory Data Analysis":
+    st.title("Exploratory Data Analysis")
+    st.write("Here you can see the EDA results.")
+    # Add your EDA code here
+
+elif page == "Clustering Analysis":
+    st.title("Clustering Analysis")
+    st.write("This section contains the results of the clustering analysis.")
+
+    # Display the data with clusters
+    st.write("Clustered Data")
+    st.write(df_clustered)
+
+    # Visualize the clusters
+    st.write("Cluster Distribution by Victim Age")
+    fig, ax = plt.subplots()
+    sns.scatterplot(data=df_clustered, x='VICTIM AGE', y='DURATION (MONTHS)', hue='Cluster', ax=ax)
+    st.pyplot(fig)
+
 # Footer
 st.markdown("---")
 st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
