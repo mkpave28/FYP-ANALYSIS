@@ -401,44 +401,33 @@ elif selected_section == "Visualizations":
         plt.tight_layout()
         ax.set_xticks(ax.get_xticks() + 0.9)  
         st.pyplot()
-
-sections.append("Clustering")
-# Clustering Section
-elif selected_section == "Clustering":
-    st.header("Clustering Analysis")
-    
-    # Specify the categorical and numeric columns
-    categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
-    numeric_columns = ['VICTIM AGE', 'INCIDENT YEAR', 'DURATION (MONTHS)']
-    
-    # Convert categorical columns to string type if needed
-    df[categorical_columns] = df[categorical_columns].astype(str)
-    
-    # Prepare the data for K-Prototypes
-    X = df[categorical_columns + numeric_columns].values
-    
-    # Initialize the K-Prototypes model
-    kproto = KPrototypes(n_clusters=3, init='Cao', verbose=2)
-    
-    # Fit the model
-    clusters = kproto.fit_predict(X, categorical=list(range(len(categorical_columns))))
-    
-    # Add the cluster labels to the dataframe
-    df['Cluster'] = clusters
-    
-    # Display clustering results
-    st.write("### Clustering Results")
-    st.dataframe(df.head())
-    
-    # Visualize clustering results
-    plt.figure(figsize=(8, 6))
-    sns.countplot(x='Cluster', data=df, palette='viridis', edgecolor='black')
-    plt.title('Distribution of Clusters', fontsize=14)
-    plt.xlabel('Cluster', fontsize=12)
-    plt.ylabel('Number of Cases', fontsize=12)
-    st.pyplot()
-
-
+        
+        sections.append("Clustering")
+    elif selected_section == "Clustering":
+        st.header("Clustering Analysis")
+        
+        categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
+        numeric_columns = ['VICTIM AGE', 'INCIDENT YEAR', 'DURATION (MONTHS)']
+        
+        df[categorical_columns] = df[categorical_columns].astype(str)
+        
+        X = df[categorical_columns + numeric_columns].values
+        
+        kproto = KPrototypes(n_clusters=3, init='Cao', verbose=2)
+        
+        clusters = kproto.fit_predict(X, categorical=list(range(len(categorical_columns))))
+        
+        df['Cluster'] = clusters
+        
+        st.write("### Clustering Results")
+        st.dataframe(df.head())
+        
+        plt.figure(figsize=(8, 6))
+        sns.countplot(x='Cluster', data=df, palette='viridis', edgecolor='black')
+        plt.title('Distribution of Clusters', fontsize=14)
+        plt.xlabel('Cluster', fontsize=12)
+        plt.ylabel('Number of Cases', fontsize=12)
+        st.pyplot()
 
 # Insights Section
 elif selected_section == "Insights":
