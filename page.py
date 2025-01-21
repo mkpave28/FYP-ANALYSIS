@@ -15,7 +15,7 @@ st.title("Women Harassment Analysis in Social Media (2018-2022)")
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-sections = ["Home", "Dataset Overview", "Visualizations","Exploratory Data Analysis", "Clustering Analysis", "Insights"]
+sections = ["Dataset Overview", "Visualizations", "Insights"]
 selected_section = st.sidebar.radio("Go to", sections)
 
 # Load dataset
@@ -410,22 +410,6 @@ elif selected_section == "Insights":
     - Visualizations reveal trends in incident frequency over the years.
     - Insights will be added here as we analyze more data.
     """)
-
-elif page == "Exploratory Data Analysis":
-    st.title("Exploratory Data Analysis")
-    st.write("Here you can see the EDA results.")
-
-elif page == "Clustering Analysis":
-    st.title("Clustering Analysis")
-    st.write("This section contains the results of the clustering analysis.")
-    
-    st.write("Clustered Data")
-    st.write(df_clustered)
-    
-    st.write("Cluster Distribution by Victim Age")
-    fig, ax = plt.subplots()
-    sns.scatterplot(data=df_clustered, x='VICTIM AGE', y='DURATION (MONTHS)', hue='Cluster', ax=ax)
-    st.pyplot(fig)
 
 # Footer
 st.markdown("---")
