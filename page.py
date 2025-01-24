@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from io import StringIO
 from kmodes.kprototypes import KPrototypes  # Add this for K-Prototypes
 import numpy as np 
-
 
 # Set page title and layout
 st.set_page_config(
@@ -41,56 +39,54 @@ else:
     sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
     selected_section = st.sidebar.radio("Go to", sections)
 
-# Load dataset
-@st.cache_data
-def load_data():
-    return pd.read_csv(
-        'https://raw.githubusercontent.com/mkpave28/FYP-ANALYSIS/refs/heads/main/SEXUAL%20HARASSMENT%20IN%20SOCIAL%20MEDIA%20FROM%202018%20UNTIL%202022%20BY%20WAO.csv'
-    )
+    # Load dataset
+    @st.cache_data
+    def load_data():
+        return pd.read_csv(
+            'https://raw.githubusercontent.com/mkpave28/FYP-ANALYSIS/refs/heads/main/SEXUAL%20HARASSMENT%20IN%20SOCIAL%20MEDIA%20FROM%202018%20UNTIL%202022%20BY%20WAO.csv'
+        )
 
-df = load_data()
+    df = load_data()
 
-# Home Page
-if selected_section == "Home":
-    st.markdown("## What is Sexual Harassment on Social Media?")
-    st.write("""
-        Sexual harassment on social media involves unwanted and inappropriate behavior, 
-        comments, or messages targeting individuals, often based on their gender or appearance. 
-        This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
-    """)
+    # Home Page
+    if selected_section == "Home":
+        st.markdown("## What is Sexual Harassment on Social Media?")
+        st.write("""
+            Sexual harassment on social media involves unwanted and inappropriate behavior, 
+            comments, or messages targeting individuals, often based on their gender or appearance. 
+            This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
+        """)
 
-    st.markdown("## Why Awareness is Important")
-    st.write("""
-        Raising awareness about sexual harassment on social media is crucial to:
-        - Educate individuals about their rights and acceptable online behavior.
-        - Encourage reporting and addressing harmful behavior.
-        - Create safer online spaces for everyone, especially women and vulnerable communities.
-    """)
+        st.markdown("## Why Awareness is Important")
+        st.write("""
+            Raising awareness about sexual harassment on social media is crucial to:
+            - Educate individuals about their rights and acceptable online behavior.
+            - Encourage reporting and addressing harmful behavior.
+            - Create safer online spaces for everyone, especially women and vulnerable communities.
+        """)
 
-    st.markdown("## How You Can Contribute")
-    st.write("""
-        - Speak out against inappropriate behavior when you see it.
-        - Support victims by showing empathy and reporting harassment.
-        - Share awareness campaigns and resources to educate others.
-        - Ensure your own actions and words promote a respectful online environment.
-    """)
+        st.markdown("## How You Can Contribute")
+        st.write("""
+            - Speak out against inappropriate behavior when you see it.
+            - Support victims by showing empathy and reporting harassment.
+            - Share awareness campaigns and resources to educate others.
+            - Ensure your own actions and words promote a respectful online environment.
+        """)
 
-    st.markdown("### Helplines and Resources")
-    st.write("""
-        - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
-        - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
-        - Contact local authorities if you or someone you know is in immediate danger.
-    """)
+        st.markdown("### Helplines and Resources")
+        st.write("""
+            - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
+            - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
+            - Contact local authorities if you or someone you know is in immediate danger.
+        """)
 
-
-
-# Dataset Overview Section
-if selected_section == "Dataset Overview":
-    st.header("Dataset Overview")
-    st.write("### First Five Rows of the Dataset")
-    st.dataframe(df.head())
-    st.write("### Summary Statistics")
-    st.dataframe(df.describe())
+    # Dataset Overview Section
+    elif selected_section == "Dataset Overview":
+        st.header("Dataset Overview")
+        st.write("### First Five Rows of the Dataset")
+        st.dataframe(df.head())
+        st.write("### Summary Statistics")
+        st.dataframe(df.describe())
     
 # Visualizations Section
 elif selected_section == "Visualizations":
