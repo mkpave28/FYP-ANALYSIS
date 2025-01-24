@@ -31,7 +31,7 @@ def load_data():
 df = load_data()
 
 # Home Page
-if option == "Home":
+if selected_section == "Home":
     st.markdown("## What is Sexual Harassment on Social Media?")
     st.write("""
         Sexual harassment on social media involves unwanted and inappropriate behavior, 
