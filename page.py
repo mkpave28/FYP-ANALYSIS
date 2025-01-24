@@ -35,11 +35,6 @@ if selected_section == "Dataset Overview":
     st.header("Dataset Overview")
     st.write("### First Five Rows of the Dataset")
     st.dataframe(df.head())
-    st.write("### Dataset Info")
-    buffer = StringIO()
-    df.info(buf=buffer)
-    info_str = buffer.getvalue()
-    st.text(info_str)
     st.write("### Summary Statistics")
     st.dataframe(df.describe())
     
