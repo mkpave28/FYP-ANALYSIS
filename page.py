@@ -18,7 +18,7 @@ st.title("Women Harassment Analysis in Social Media (2018-2022)")
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-sections = ["Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
+sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
 selected_section = st.sidebar.radio("Go to", sections)
 
 # Load dataset
@@ -29,6 +29,40 @@ def load_data():
     )
 
 df = load_data()
+
+# Home Page
+if option == "Home":
+    st.markdown("## What is Sexual Harassment on Social Media?")
+    st.write("""
+        Sexual harassment on social media involves unwanted and inappropriate behavior, 
+        comments, or messages targeting individuals, often based on their gender or appearance. 
+        This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
+    """)
+
+    st.markdown("## Why Awareness is Important")
+    st.write("""
+        Raising awareness about sexual harassment on social media is crucial to:
+        - Educate individuals about their rights and acceptable online behavior.
+        - Encourage reporting and addressing harmful behavior.
+        - Create safer online spaces for everyone, especially women and vulnerable communities.
+    """)
+
+    st.markdown("## How You Can Contribute")
+    st.write("""
+        - Speak out against inappropriate behavior when you see it.
+        - Support victims by showing empathy and reporting harassment.
+        - Share awareness campaigns and resources to educate others.
+        - Ensure your own actions and words promote a respectful online environment.
+    """)
+
+    st.markdown("### Helplines and Resources")
+    st.write("""
+        - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
+        - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
+        - Contact local authorities if you or someone you know is in immediate danger.
+    """)
+
+
 
 # Dataset Overview Section
 if selected_section == "Dataset Overview":
