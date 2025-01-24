@@ -30,21 +30,9 @@ def load_data():
 
 df = load_data()
 
-# Dataset Overview Section
-if selected_section == "Dataset Overview":
-    st.header("Dataset Overview")
-    st.write("### First Five Rows of the Dataset")
-    st.dataframe(df.head())
-    st.write("### Dataset Info")
-    buffer = StringIO()
-    df.info(buf=buffer)
-    info_str = buffer.getvalue()
-    st.text(info_str)
-    st.write("### Summary Statistics")
-    st.dataframe(df.describe())
 
 # Visualizations Section
-elif selected_section == "Visualizations":
+if selected_section == "Visualizations":
     st.header("Visualizations")
     
     # List of all graphs
