@@ -16,6 +16,27 @@ st.set_page_config(
 # Dashboard Title
 st.title("Women Harassment Analysis in Social Media (2018-2022)")
 
+# Session state to track authentication
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+# IC Number Verification
+if not st.session_state.authenticated:
+    st.title("Access the Sexual Harassment Analysis Dashboard")
+    st.write("Please enter your IC number to proceed.")
+    
+    ic_number = st.text_input("IC Number (e.g., 123456-78-9012):", type="password")
+    submit_button = st.button("Submit")
+
+    if submit_button:
+        # Example check: Replace with your actual validation logic
+        if len(ic_number) == 14 and ic_number[6] == '-' and ic_number[9] == '-':
+            st.session_state.authenticated = True
+            st.success("Access Granted!")
+        else:
+            st.error("Invalid IC Number. Please try again.")
+else:
+
 # Sidebar for navigation
 st.sidebar.title("Navigation")
 sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
@@ -67,7 +88,7 @@ if selected_section == "Home":
 # Dataset Overview Section
 if selected_section == "Dataset Overview":
     st.header("Dataset Overview")
-    st.write("### First Ten Rows of the Dataset")
+    st.write("### First Five Rows of the Dataset")
     st.dataframe(df.head())
     st.write("### Summary Statistics")
     st.dataframe(df.describe())
