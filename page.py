@@ -67,7 +67,7 @@ if selected_section == "Home":
 # Dataset Overview Section
 if selected_section == "Dataset Overview":
     st.header("Dataset Overview")
-    st.write("### First Five Rows of the Dataset")
+    st.write("### First Ten Rows of the Dataset")
     st.dataframe(df.head())
     st.write("### Summary Statistics")
     st.dataframe(df.describe())
