@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from kmodes.kprototypes import KPrototypes  # Add this for K-Prototypes
 import numpy as np 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
 
 # Set page title and layout
 st.set_page_config(
