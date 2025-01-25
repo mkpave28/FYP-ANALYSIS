@@ -446,7 +446,6 @@ elif selected_section == "Visualizations":
     elif selected_section == "Clustering Results":
         st.header("Clustering Analysis")
         
-    # Defining categorical and numerical columns
         categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 
                                'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
         numeric_columns = ['VICTIM AGE', 'INCIDENT YEAR', 'DURATION (MONTHS)']
