@@ -86,7 +86,7 @@ elif selected_section == "Dataset Overview":
     st.write("### Summary Statistics")
     st.dataframe(df.describe())
     
- elif selected_section == "Visualizations":
+elif selected_section == "Visualizations":
     st.header("Visualizations")
 
     graph_options = [
