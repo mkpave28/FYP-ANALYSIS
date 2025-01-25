@@ -34,7 +34,6 @@ if not st.session_state.authenticated:
         else:
             st.error("Invalid IC Number. Please try again.")
 else:
-    # Sidebar for navigation
     st.sidebar.title("Navigation")
     sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
     selected_section = st.sidebar.radio("Go to", sections)
@@ -48,80 +47,78 @@ else:
 
     df = load_data()
 
-    # Home Page
-    if selected_section == "Home":
-        st.markdown("## What is Sexual Harassment on Social Media?")
-        st.write("""
-            Sexual harassment on social media involves unwanted and inappropriate behavior, 
-            comments, or messages targeting individuals, often based on their gender or appearance. 
-            This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
-        """)
+  
+if selected_section == "Home":
+    st.markdown("## What is Sexual Harassment on Social Media?")
+    st.write("""
+        Sexual harassment on social media involves unwanted and inappropriate behavior, 
+        comments, or messages targeting individuals, often based on their gender or appearance. 
+        This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
+    """)
 
-        st.markdown("## Why Awareness is Important")
-        st.write("""
-            Raising awareness about sexual harassment on social media is crucial to:
-            - Educate individuals about their rights and acceptable online behavior.
-            - Encourage reporting and addressing harmful behavior.
-            - Create safer online spaces for everyone, especially women and vulnerable communities.
-        """)
+    st.markdown("## Why Awareness is Important")
+    st.write("""
+        Raising awareness about sexual harassment on social media is crucial to:
+        - Educate individuals about their rights and acceptable online behavior.
+        - Encourage reporting and addressing harmful behavior.
+        - Create safer online spaces for everyone, especially women and vulnerable communities.
+    """)
 
-        st.markdown("## How You Can Contribute")
-        st.write("""
-            - Speak out against inappropriate behavior when you see it.
-            - Support victims by showing empathy and reporting harassment.
-            - Share awareness campaigns and resources to educate others.
-            - Ensure your own actions and words promote a respectful online environment.
-        """)
+    st.markdown("## How You Can Contribute")
+    st.write("""
+        - Speak out against inappropriate behavior when you see it.
+        - Support victims by showing empathy and reporting harassment.
+        - Share awareness campaigns and resources to educate others.
+        - Ensure your own actions and words promote a respectful online environment.
+     """)
 
-        st.markdown("### Helplines and Resources")
-        st.write("""
-            - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
-            - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
-            - Contact local authorities if you or someone you know is in immediate danger.
-        """)
+    st.markdown("### Helplines and Resources")
+    st.write("""
+        - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
+        - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
+        - Contact local authorities if you or someone you know is in immediate danger.
+    """)
 
-    # Dataset Overview Section
-    elif selected_section == "Dataset Overview":
-        st.header("Dataset Overview")
-        st.write("### First Five Rows of the Dataset")
-        st.dataframe(df.head())
-        st.write("### Summary Statistics")
-        st.dataframe(df.describe())
+elif selected_section == "Dataset Overview":
+    st.header("Dataset Overview")
+    st.write("### First Five Rows of the Dataset")
+    st.dataframe(df.head())
+    st.write("### Summary Statistics")
+    st.dataframe(df.describe())
     
-    elif selected_section == "Visualizations":
-        st.header("Visualizations")
+ elif selected_section == "Visualizations":
+    st.header("Visualizations")
 
-        graph_options = [
-            "Age Distribution of Victims (Histogram)",
-            "Age Range of Victims (Boxplot)",
-            "Yearly Frequency of Harassment Cases",
-            "Harassment Cases Over the Years: Histogram and KDE",
-            "Duration of Harassment Cases (in Months)",
-            "Percentage Distribution of Harassment Types (Pie Chart)",
-            "State-Wise Distribution of Harassment Cases",
-            "Actions Taken Against Harassment Cases",
-            "Victim Age Across Different Education Levels",
-            "Victim Age by Type of Harassment",
-            "Harassment Type Across Education Levels",
-            "Harassment Cases Across Social Media Platforms",
-            "State-Wise Harassment Types: A Stacked View",
-            "Trends in Harassment Types by Incident Year",
-            "Average Harassment Duration by Victim Age",
-            "Education Levels and Actions Results",
-            "Action Taken and Actions Results",
-            "Total Results Across Different States",
-            "Average Duration of Harassment by Social Media Platform",
-            "Action Results Over the Years",
-            "Actions Taken Across Harassment Types",
-            "Average Harassment Duration by Action Results",
-            "Median Age of Victims Across Social Media Platforms",
-            "Education Level vs. Social Media Platform Usage"
+    graph_options = [
+        "Age Distribution of Victims (Histogram)",
+        "Age Range of Victims (Boxplot)",
+        "Yearly Frequency of Harassment Cases",
+        "Harassment Cases Over the Years: Histogram and KDE",
+        "Duration of Harassment Cases (in Months)",
+        "Percentage Distribution of Harassment Types (Pie Chart)",
+        "State-Wise Distribution of Harassment Cases",
+        "Actions Taken Against Harassment Cases",
+        "Victim Age Across Different Education Levels",
+        "Victim Age by Type of Harassment",
+        "Harassment Type Across Education Levels",
+        "Harassment Cases Across Social Media Platforms",
+        "State-Wise Harassment Types: A Stacked View",
+        "Trends in Harassment Types by Incident Year",
+        "Average Harassment Duration by Victim Age",
+        "Education Levels and Actions Results",
+        "Action Taken and Actions Results",
+        "Total Results Across Different States",
+        "Average Duration of Harassment by Social Media Platform",
+        "Action Results Over the Years",
+        "Actions Taken Across Harassment Types",
+        "Average Harassment Duration by Action Results",
+        "Median Age of Victims Across Social Media Platforms",
+        "Education Level vs. Social Media Platform Usage"
         
-        ]
+    ]
         
-        selected_graph = st.selectbox("Select a graph to view", graph_options)
-
-    # Graph Implementation
+    selected_graph = st.selectbox("Select a graph to view", graph_options)
+        
     if selected_graph == "Age Distribution of Victims":
         plt.figure(figsize=(8, 6))
         sns.histplot(df['VICTIM AGE'], kde=True, bins=20, color='#008080', edgecolor='black')
@@ -129,7 +126,7 @@ else:
         plt.xlabel('Age of Victims', fontsize=12)
         plt.ylabel('Number of Cases', fontsize=12)
         st.pyplot()
-    
+           
     elif selected_graph == "Age Range of Victims":
         plt.figure(figsize=(8, 6))
         sns.boxplot(x=df['VICTIM AGE'], color='#FF6347')
