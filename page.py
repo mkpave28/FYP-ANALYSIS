@@ -88,40 +88,38 @@ else:
         st.write("### Summary Statistics")
         st.dataframe(df.describe())
     
-# Visualizations Section
-elif selected_section == "Visualizations":
-    st.header("Visualizations")
-    
-    # List of all graphs
-    graph_options = [
-        "Age Distribution of Victims (Histogram)",
-        "Age Range of Victims (Boxplot)",
-        "Yearly Frequency of Harassment Cases",
-        "Harassment Cases Over the Years: Histogram and KDE",
-        "Duration of Harassment Cases (in Months)",
-        "Percentage Distribution of Harassment Types (Pie Chart)",
-        "State-Wise Distribution of Harassment Cases",
-        "Actions Taken Against Harassment Cases",
-        "Victim Age Across Different Education Levels",
-        "Victim Age by Type of Harassment",
-        "Harassment Type Across Education Levels",
-        "Harassment Cases Across Social Media Platforms",
-        "State-Wise Harassment Types: A Stacked View",
-        "Trends in Harassment Types by Incident Year",
-        "Average Harassment Duration by Victim Age",
-        "Education Levels and Actions Results",
-        "Action Taken and Actions Results",
-        "Total Results Across Different States",
-        "Average Duration of Harassment by Social Media Platform",
-        "Action Results Over the Years",
-        "Actions Taken Across Harassment Types",
-        "Average Harassment Duration by Action Results",
-        "Median Age of Victims Across Social Media Platforms",
-        "Education Level vs. Social Media Platform Usage"
-    
-    ]
-    
-    selected_graph = st.selectbox("Select a graph to view", graph_options)
+    elif selected_section == "Visualizations":
+        st.header("Visualizations")
+        
+        graph_options = [
+            "Age Distribution of Victims (Histogram)",
+            "Age Range of Victims (Boxplot)",
+            "Yearly Frequency of Harassment Cases",
+            "Harassment Cases Over the Years: Histogram and KDE",
+            "Duration of Harassment Cases (in Months)",
+            "Percentage Distribution of Harassment Types (Pie Chart)",
+            "State-Wise Distribution of Harassment Cases",
+            "Actions Taken Against Harassment Cases",
+            "Victim Age Across Different Education Levels",
+            "Victim Age by Type of Harassment",
+            "Harassment Type Across Education Levels",
+            "Harassment Cases Across Social Media Platforms",
+            "State-Wise Harassment Types: A Stacked View",
+            "Trends in Harassment Types by Incident Year",
+            "Average Harassment Duration by Victim Age",
+            "Education Levels and Actions Results",
+            "Action Taken and Actions Results",
+            "Total Results Across Different States",
+            "Average Duration of Harassment by Social Media Platform",
+            "Action Results Over the Years",
+            "Actions Taken Across Harassment Types",
+            "Average Harassment Duration by Action Results",
+            "Median Age of Victims Across Social Media Platforms",
+            "Education Level vs. Social Media Platform Usage"
+        
+        ]
+        
+        selected_graph = st.selectbox("Select a graph to view", graph_options)
 
     # Graph Implementation
     if selected_graph == "Age Distribution of Victims":
