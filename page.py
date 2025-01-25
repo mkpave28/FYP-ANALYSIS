@@ -90,7 +90,9 @@ else:
     
     elif selected_section == "Visualizations":
         st.header("Visualizations")
-        
+
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+
         graph_options = [
             "Age Distribution of Victims (Histogram)",
             "Age Range of Victims (Boxplot)",
