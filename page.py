@@ -478,22 +478,14 @@ else:
         sns.pairplot(df, hue='Cluster', vars=numeric_columns, palette='viridis')
         st.pyplot()
     
-   
-    
-    
-
-
-
-# Insights Section
-elif selected_section == "Insights":
-    st.header("Insights")
-    st.write("### Key Findings and Observations")
-    st.markdown("""
-    - The dataset covers incidents of harassment reported from 2018 to 2022.
-    - Visualizations reveal trends in incident frequency over the years.
-    - Insights will be added here as we analyze more data.
-    """)
-
-# Footer
-st.markdown("---")
-st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
+    elif selected_section == "Insights":
+        st.header("Insights")
+        st.write("### Key Findings and Observations")
+        st.markdown("""
+        - The dataset covers incidents of harassment reported from 2018 to 2022.
+        - Visualizations reveal trends in incident frequency over the years.
+        - Insights will be added here as we analyze more data.
+        """)
+        
+        st.markdown("---")
+        st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
