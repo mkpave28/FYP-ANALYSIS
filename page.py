@@ -46,47 +46,45 @@ else:
         )
 
     df = load_data()
-
-  
-if selected_section == "Home":
-    st.markdown("## What is Sexual Harassment on Social Media?")
-    st.write("""
+    
+    if selected_section == "Home":
+        st.markdown("## What is Sexual Harassment on Social Media?")
+        st.write("""
         Sexual harassment on social media involves unwanted and inappropriate behavior, 
         comments, or messages targeting individuals, often based on their gender or appearance. 
         This includes threats, stalking, cyberbullying, and the non-consensual sharing of intimate images.
-    """)
-
-    st.markdown("## Why Awareness is Important")
-    st.write("""
+        """)
+        
+        st.markdown("## Why Awareness is Important")
+        st.write("""
         Raising awareness about sexual harassment on social media is crucial to:
         - Educate individuals about their rights and acceptable online behavior.
         - Encourage reporting and addressing harmful behavior.
         - Create safer online spaces for everyone, especially women and vulnerable communities.
-    """)
-
-    st.markdown("## How You Can Contribute")
-    st.write("""
+        """)
+        
+        st.markdown("## How You Can Contribute")
+        st.write("""
         - Speak out against inappropriate behavior when you see it.
         - Support victims by showing empathy and reporting harassment.
         - Share awareness campaigns and resources to educate others.
         - Ensure your own actions and words promote a respectful online environment.
-     """)
-
-    st.markdown("### Helplines and Resources")
-    st.write("""
+        """)
+        
+        st.markdown("### Helplines and Resources")
+        st.write("""
         - [Women's Aid Organization (WAO) Malaysia](https://wao.org.my/)
         - [Cyber999 - Cybersecurity Malaysia](https://www.cybersecurity.my/)
         - Contact local authorities if you or someone you know is in immediate danger.
-    """)
-
-elif selected_section == "Dataset Overview":
-    st.header("Dataset Overview")
-    st.write("### First Five Rows of the Dataset")
-    st.dataframe(df.head())
-    st.write("### Summary Statistics")
-    st.dataframe(df.describe())
-    
-elif selected_section == "Visualizations":
+        """)
+        
+    elif selected_section == "Dataset Overview":
+            st.header("Dataset Overview")
+            st.write("### First Five Rows of the Dataset")
+            st.dataframe(df.head())
+            st.write("### Summary Statistics")
+            st.dataframe(df.describe())
+    elif selected_section == "Visualizations":
     st.header("Visualizations")
 
     graph_options = [
@@ -442,7 +440,7 @@ elif selected_section == "Visualizations":
         plt.tight_layout()
         ax.set_xticks(ax.get_xticks() + 0.9)  
         st.pyplot()
-        
+    
     elif selected_section == "Clustering Results":
         st.header("Clustering Analysis")
         
@@ -485,3 +483,7 @@ elif selected_section == "Visualizations":
         
         st.markdown("---")
         st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
+
+
+
+        
