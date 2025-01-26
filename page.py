@@ -89,12 +89,12 @@ else:
         st.header("Visualizations")
         
         graph_options = [
-            "Age Distribution of Victims (Histogram)",
-            "Age Range of Victims (Boxplot)",
+            "Age Distribution of Victims",
+            "Age Range of Victims",
             "Yearly Frequency of Harassment Cases",
             "Harassment Cases Over the Years: Histogram and KDE",
             "Duration of Harassment Cases (in Months)",
-            "Percentage Distribution of Harassment Types (Pie Chart)",
+            "Percentage Distribution of Harassment Types",
             "State-Wise Distribution of Harassment Cases",
             "Actions Taken Against Harassment Cases",
             "Victim Age Across Different Education Levels",
@@ -117,7 +117,7 @@ else:
         
         selected_graph = st.selectbox("Select a graph to view", graph_options)
         
-        if selected_graph == "Age Distribution of Victims (Histogram)":
+        if selected_graph == "Age Distribution of Victims":
             plt.figure(figsize=(8, 6))
             sns.histplot(df['VICTIM AGE'], kde=True, bins=20, color='#008080', edgecolor='black')
             plt.title('Age Distribution of Victims')
@@ -125,7 +125,7 @@ else:
             plt.ylabel('Number of Cases', fontsize=12)
             st.pyplot(plt)
         
-        elif selected_graph == "Age Range of Victims (Boxplot)":
+        elif selected_graph == "Age Range of Victims":
             plt.figure(figsize=(8, 6))
             sns.boxplot(x=df['VICTIM AGE'], color='#FF6347')
             plt.title('Age Range of Victims', fontsize=14)
