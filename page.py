@@ -481,6 +481,24 @@ else:
             
             st.markdown("---")
             st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
+        
+     elif selected_section == "Disclaimer":
+        st.header("Disclaimer")
+        st.write("### Important Information")
+        st.markdown("""
+        **Disclaimer:**
+        - This dashboard is for educational and analytical purposes only.  
+        - The data is anonymized and does not contain personally identifiable information (PII).  
+        - Insights derived here are based on available data and are not intended as legal or professional advice.  
+
+        **Ethical Guidelines:**
+        - The goal is to raise awareness about online harassment.  
+        - Misuse of data or insights is strictly discouraged.  
+
+        **Contact:**
+        If you have concerns, email us at: [your_email@example.com](mailto:your_email@example.com)
+        """)
+        st.warning("By using this dashboard, you agree to the terms outlined above.")
 
 
 
