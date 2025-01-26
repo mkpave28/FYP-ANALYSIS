@@ -101,7 +101,7 @@ else:
             "Victim Age by Type of Harassment",
             "Harassment Type Across Education Levels",
             "Harassment Cases Across Social Media Platforms",
-            "State-Wise Harassment Types: A Stacked View",
+            "State-Wise Harassment Types",
             "Trends in Harassment Types by Incident Year",
             "Average Harassment Duration by Victim Age",
             "Education Levels and Actions Results",
@@ -313,7 +313,7 @@ else:
             plt.tight_layout()
             st.pyplot()
         
-        elif selected_graph == "Action Taken and Results":
+        elif selected_graph == "Action Taken and Action Results":
             action_outcome = pd.crosstab(df['ACTION TAKEN'], df['OUTCOME/RESULTS'])
             action_outcome.plot(kind='bar', figsize=(8, 6), colormap='viridis_r', edgecolor='black')
             plt.title('Action Taken and Actions Results', fontsize=14)
@@ -345,7 +345,7 @@ else:
             plt.grid(axis='y', alpha=0.3)
             st.pyplot()
         
-        elif selected_graph == "Average Duration by Social Media Platform":
+        elif selected_graph == "Average Duration of Harassment by Social Media Platform":
             platform_avg_duration = df.groupby('SOCIAL MEDIA PLATFORM')['DURATION (MONTHS)'].mean().reset_index()
             
             plt.figure(figsize=(8, 6))
@@ -412,7 +412,7 @@ else:
             plt.grid(axis='y', alpha=0.3)
             st.pyplot()
         
-        elif selected_graph == "Median Age by Social Media Platform":
+        elif selected_graph == "Median Age of Victims Across Social Media Platform":
             platform_median_age = df.groupby('SOCIAL MEDIA PLATFORM')['VICTIM AGE'].median().reset_index()
             
             plt.figure(figsize=(10, 8))
