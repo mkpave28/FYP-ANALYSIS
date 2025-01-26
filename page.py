@@ -412,7 +412,7 @@ else:
             plt.grid(axis='y', alpha=0.3)
             st.pyplot()
         
-        elif selected_graph == "Median Age of Victims Across Social Media Platform":
+        elif selected_graph == "Median Age of Victims Across Social Media Platforms":
             platform_median_age = df.groupby('SOCIAL MEDIA PLATFORM')['VICTIM AGE'].median().reset_index()
             
             plt.figure(figsize=(10, 8))
