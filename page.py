@@ -313,7 +313,7 @@ else:
             plt.tight_layout()
             st.pyplot()
         
-        elif selected_graph == "Action Taken and Action Results":
+        elif selected_graph == "Action Taken and Actions Results":
             action_outcome = pd.crosstab(df['ACTION TAKEN'], df['OUTCOME/RESULTS'])
             action_outcome.plot(kind='bar', figsize=(8, 6), colormap='viridis_r', edgecolor='black')
             plt.title('Action Taken and Actions Results', fontsize=14)
