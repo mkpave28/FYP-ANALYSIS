@@ -482,7 +482,7 @@ else:
             st.markdown("---")
             st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
         
-     elif selected_section == "Disclaimer":
+    elif selected_section == "Disclaimer":
         st.header("Disclaimer")
         st.write("### Important Information")
         st.markdown("""
