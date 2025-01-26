@@ -474,8 +474,8 @@ else:
             clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
         except Exception as e:
             st.error(f"Error in clustering: {e}")
-        
-        elif selected_section == "Insights":
+    
+    elif selected_section == "Insights":
             st.header("Insights")
             st.write("### Key Findings and Observations")
             st.markdown("""
