@@ -469,11 +469,6 @@ else:
         plt.figure(figsize=(12, 8))
         sns.pairplot(df, hue='Cluster', vars=numeric_columns, palette='viridis')
         st.pyplot()
-
-    try:
-        clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
-    except Exception as e:
-        st.error(f"Error in clustering: {e}")
     
     elif selected_section == "Insights":
             st.header("Insights")
