@@ -442,38 +442,38 @@ else:
             ax.set_xticks(ax.get_xticks() + 0.9)  
             st.pyplot()
         
-        elif selected_section == "Clustering Results":
-            st.header("Clustering Analysis")
+    elif selected_section == "Clustering Results":
+        st.header("Clustering Analysis")
             
-            categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
-            numeric_columns = ['VICTIM AGE', 'INCIDENT YEAR', 'DURATION (MONTHS)']
+        categorical_columns = ['EDUCATION LEVEL', 'SOCIAL MEDIA PLATFORM', 'LOCATION (STATE)', 'TYPE OF HARASSMENT', 'ACTION TAKEN', 'OUTCOME/RESULTS']
+        numeric_columns = ['VICTIM AGE', 'INCIDENT YEAR', 'DURATION (MONTHS)']
             
-            df[categorical_columns] = df[categorical_columns].astype(str)
-            X = df[categorical_columns + numeric_columns].values
+        df[categorical_columns] = df[categorical_columns].astype(str)
+        X = df[categorical_columns + numeric_columns].values
             
-            kproto = KPrototypes(n_clusters=3, init='Cao', verbose=1)
-            clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
-            df['Cluster'] = clusters
+        kproto = KPrototypes(n_clusters=3, init='Cao', verbose=1)
+        clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
+        df['Cluster'] = clusters
             
-            st.write("### Clustering Results")
-            st.dataframe(df.head())
+        st.write("### Clustering Results")
+        st.dataframe(df.head())
             
-            plt.figure(figsize=(8, 6))
-            sns.countplot(x='Cluster', data=df, palette='viridis', edgecolor='black')
-            plt.title('Distribution of Clusters', fontsize=14)
-            plt.xlabel('Cluster', fontsize=12)
-            plt.ylabel('Number of Cases', fontsize=12)
-            st.pyplot(plt)
+        plt.figure(figsize=(8, 6))
+        sns.countplot(x='Cluster', data=df, palette='viridis', edgecolor='black')
+        plt.title('Distribution of Clusters', fontsize=14)
+        plt.xlabel('Cluster', fontsize=12)
+        plt.ylabel('Number of Cases', fontsize=12)
+        st.pyplot(plt)
             
-            st.write("### Detailed Analysis")
-            plt.figure(figsize=(12, 8))
-            sns.pairplot(df, hue='Cluster', vars=numeric_columns, palette='viridis')
-            st.pyplot()
+        st.write("### Detailed Analysis")
+        plt.figure(figsize=(12, 8))
+        sns.pairplot(df, hue='Cluster', vars=numeric_columns, palette='viridis')
+        st.pyplot()
 
-        try:
-            clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
-        except Exception as e:
-            st.error(f"Error in clustering: {e}")
+    try:
+        clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
+    except Exception as e:
+        st.error(f"Error in clustering: {e}")
     
     elif selected_section == "Insights":
             st.header("Insights")
