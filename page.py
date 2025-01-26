@@ -35,7 +35,7 @@ if not st.session_state.authenticated:
             st.error("Invalid IC Number. Please try again.")
 else:
     st.sidebar.title("Navigation")
-    sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights"]
+    sections = ["Home", "Dataset Overview", "Visualizations", "Clustering Results", "Insights", "Disclaimer"]
     selected_section = st.sidebar.radio("Go to", sections)
 
     # Load dataset
