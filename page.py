@@ -496,7 +496,7 @@ else:
         - Misuse of data or insights is strictly discouraged.  
 
         **Contact:**
-        If you have concerns, email us at: [your_email@example.com](mailto:your_email@example.com)
+        If you have concerns, email us at: [pavethranbatmanathen@gmail.com](mailto:pavethranbatmanathen@gmail.com)
         """)
         st.warning("By using this dashboard, you agree to the terms outlined above.")
 
