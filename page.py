@@ -480,7 +480,7 @@ else:
             """)
             
             st.markdown("---")
-            st.markdown("Created by PAVETHRAN BATMANATHEN as part of Final Year Project")
+            st.markdown("Created by PAVETHRAN BATMANATHEN")
         
     elif selected_section == "Disclaimer":
         st.header("Disclaimer")
