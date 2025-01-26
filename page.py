@@ -123,14 +123,15 @@ else:
             plt.title('Age Distribution of Victims')
             plt.xlabel('Age of Victims', fontsize=12)
             plt.ylabel('Number of Cases', fontsize=12)
-            st.pyplot()
+            st.pyplot(plt)
         
         elif selected_graph == "Age Range of Victims":
             plt.figure(figsize=(8, 6))
             sns.boxplot(x=df['VICTIM AGE'], color='#FF6347')
             plt.title('Age Range of Victims', fontsize=14)
             plt.xlabel('Age of Victims', fontsize=12)
-            st.pyplot()
+            st.pyplot(plt)
+            
         elif selected_graph == "Yearly Frequency of Harassment Cases":
             plt.figure(figsize=(8, 6))
             sns.countplot(x='INCIDENT YEAR', data=df, palette='Dark2', edgecolor='black')
@@ -138,7 +139,7 @@ else:
             plt.xlabel('Year of Incident', fontsize=12)
             plt.ylabel('Number of Cases', fontsize=12)
             plt.xticks(rotation=90)
-            st.pyplot()
+            st.pyplot(plt)
         
         elif selected_graph == "Harassment Cases Over the Years: Histogram and KDE":
             plt.figure(figsize=(8, 6))
@@ -153,7 +154,7 @@ else:
             plt.title('Harassment Cases Over the Years: Histogram and KDE', fontsize=14)
             plt.xlabel('Year of Incident', fontsize=12)
             plt.ylabel('Number of Cases', fontsize=12)  
-            st.pyplot()
+            st.pyplot(plt)
         
         elif selected_graph == "Duration of Harassment Cases (in Months)":
             plt.figure(figsize=(8, 6))
@@ -161,7 +162,7 @@ else:
             plt.title('Duration of Harassment Cases (in Months)', fontsize=14)
             plt.xlabel('Duration (Months)', fontsize=12)
             plt.ylabel('Number of Cases', fontsize=12)
-            st.pyplot()
+            st.pyplot(plt)
         
         elif selected_graph == "Percentage Distribution of Harassment Types":
             harassment_counts = df['TYPE OF HARASSMENT'].value_counts()
@@ -451,7 +452,7 @@ else:
             X = df[categorical_columns + numeric_columns].values
             
             kproto = KPrototypes(n_clusters=3, init='Cao', verbose=1)
-            clusters = kproto.fit_predict(X, categorical=list(range(len(categorical_columns))))
+            clusters = kproto.fit_predict(X, categorical=[i for i in range(len(categorical_columns))])
             df['Cluster'] = clusters
             
             st.write("### Clustering Results")
